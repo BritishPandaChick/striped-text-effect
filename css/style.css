@@ -8,3 +8,35 @@ h1 {
   margin: 0.125em 0;
   position: relative;
 }
+
+h1::before, h1::after {
+  content: "";
+  font: inherit;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Add the stripes */
+h1::before {
+  background: -webkit-repeating-linear-gradient(135deg, #d5013f, #d5013f 20px, #fff 20px, #fff 40px);
+  background: repeating-linear-gradient(-45deg, #d5013f, #d5013f 20px, #fff 20px, #fff 40px);
+  mix-blend-mode: overlay;
+}
+
+h1::after {
+  background: white;
+  content: "happy holidays";
+  color: black;
+  text-shadow: none;
+  mix-blend-mode: lighten;
+  bottom: -20px;
+}
+
+/* fix issues for trying to selecting text */
+::selection {
+  background: #000;
+}
